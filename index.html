@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- /Favicon -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/code.jquery.com_jquery-3.4.1.js"></script>
+    <title>Harlah IT Cyber ke-13</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <div class="topwhite-container">
+        <a href="https://www.itcybercommunity.com/">
+            <img src="https://www.itcybercommunity.com/assets/img/itc1.png">
+            <h2>IT Cyber Community</h2>
+        </a>
+    </div>
+
+    <!-- body -->
+    <div class="darken-container">
+        <dialog id="submitDialog" class="dialog-box">
+            <h4>Data Telah Disimpan</h4>
+            <hr>
+            <p>Terima kasih sudah datang!</p>
+            <button class="dialog-button" onclick="closeDialog()">Oke</button>
+        </dialog>
+
+        <div class="body-card">
+            <div class="card-title">
+                <h1>Selamat Datang!</h1>
+                <p>Di acara harlah IT Cyber Cummunity yang ke-13</p>
+                <hr>
+            </div>
+
+            <div class="form-container">
+                <form id="form" method="post">
+                    <p>Nama <br>
+                        <input type="text" placeholder="Masukkan nama" id="Nama" name="Nama">
+                    </p>
+
+                    <p>No. Handphone <br>
+                        <input type="number" placeholder="Masukkan Nomor Handphone" id="NoHP" name="NoHP">
+                    </p>
+
+                    <p>Angkatan <br>
+                        <input type="number" placeholder="Angkatan ke berapa?" id="Angkatan" name="Angkatan">
+                    </p>
+
+                    <button class="button-submit" type="button" name="submit" id="submit" disabled>Kirim</button>
+                    <button class="button-clear" type="reset" name="clear" id="clear">Clear</button>
+
+                    <script>
+                        let inputs = document.querySelectorAll('input');
+                        let submitButton = document.getElementById('submit');
+
+                        let inputValidator = {
+                            "Nama": false,
+                            "NoHP": false,
+                            "Angkatan": false
+                        }
+
+                        inputs.forEach((input) => {
+                            input.addEventListener('input', () => {
+                                let name = event.target.getAttribute('name');
+                                if (event.target.value.length > 0) {
+                                    inputValidator[name] = true;
+                                } else {
+                                    inputValidator[name] = false;
+                                };
+
+                                let allTrue = Object.keys(inputValidator).every((item) => {
+                                    return inputValidator[item] === true
+                                });
+
+                                if (allTrue) {
+                                    submitButton.disabled = false;
+                                } else {
+                                    submitButton.disabled = true;
+                                }
+                            })
+                        })
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#submit").click(function () {
+                var data = $('#form').serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: "assets/php/insert.php",
+                    data: data,
+
+                    cache: false,
+                    success: showDialog(),
+                });
+            });
+
+            $("#clear").click(function () {
+                submitButton.disabled = true;
+            });
+        });
+
+        const dialog = document.getElementById("submitDialog");
+
+        function showDialog() {
+            dialog.showModal();
+        }
+
+        function closeDialog() {
+            dialog.close();
+        } 
+    </script>
+
+</body>
+
+<footer>
+    &copy;2023 IT Cyber Community
+</footer>
+
+</html>

@@ -1,0 +1,204 @@
+html {
+    font-family: 'Pacifico', cursive;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: url("https://www.itcybercommunity.com/img/red.png");
+    background-size: cover;
+    margin: 0pt;
+}
+
+.topwhite-container a {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding-inline: 20pt;
+    text-decoration: none;
+    color: black;
+}
+
+.topwhite-container img {
+    max-width: 30pt;
+    max-height: 30pt;
+    margin-right: 15pt;
+}
+
+.darken-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+}
+
+.dialog-box {
+    width: 50vw;
+    max-width: 500px;
+    background-color: white;
+    border: none;
+    border-radius: 15pt;
+    text-align: center;
+}
+
+.dialog-button {
+    border: none;
+    background-color: red;
+    color: white;
+    border-radius: 5pt;
+    padding: 10pt;
+}
+
+.dialog-button:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.dialog-button:active {
+    background-color: white;
+    color: red;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.body-card {
+    margin-left: 5vw;
+    background-color: white;
+    width: 45vw;
+    min-width: 300pt;
+    height: 70vh;
+    border-radius: 10pt;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-title p {
+    margin-top: -20pt;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    font-family: arial;
+    font-weight: bold;
+}
+
+.form-container p {
+    text-align: left;
+}
+
+.form-container input {
+    margin-top: 5pt;
+    margin-bottom: 10pt;
+    padding: 5pt;
+    border-radius: 10pt;
+    width: 39vw;
+    min-width: 250pt;
+    border-color: red;
+}
+
+.button-submit {
+    cursor: pointer;
+    background-color: rgb(0, 110, 255);
+    color: white;
+    border: none;
+    border-radius: 2pt;
+    padding: 5pt;
+    padding-inline: 10pt;
+}
+
+.button-submit:hover {
+    background-color: rgba(0, 110, 255, 0.5);
+}
+
+.button-submit:active {
+    background-color: white;
+    color: rgb(0, 110, 255);
+}
+
+.button-submit:disabled {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.418);
+    cursor: default;
+}
+
+.button-clear {
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 2pt;
+    padding: 5pt;
+    padding-inline: 10pt;
+}
+
+.button-clear:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.button-clear:active {
+    background-color: white;
+    color: red;
+}
+
+footer {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10pt;
+    text-align: center;
+}
+
+@media screen and (max-width:960px) {
+    .darken-container {
+        justify-content: center;
+        min-height: 500pt;
+    }
+
+    .body-card {
+        min-height: 400pt;
+        margin-left: 0pt;
+    }
+}
+
+@media screen and (max-width:1280px) {
+    .body-card {
+        min-height: 350pt;
+    }
+}
+
+@media screen and (min-width:1920px) {
+    .body-card{
+        font-size: 1vw;
+        border-radius: 5vw;
+    }
+
+    .form-container input {
+        padding: 1vw;
+        border-radius: 2vw;
+        border-width: 0.2vw;
+        height: 1vw;
+        font-size: 1vw;
+    }
+
+    .form-container button {
+        font-size: 1vw;
+        padding: 1vw;
+        padding-inline: 2vw;
+        border-radius: 2vw;
+    }
+
+    .dialog-box {
+        max-width: none;
+        font-size: 1vw;
+        border-radius: 5vw;
+    }
+
+    .dialog-box button {
+        font-size: 1vw;
+        padding: 1vw;
+        padding-inline: 2vw;
+        border-radius: 2vw;
+    }
+}
